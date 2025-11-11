@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-CHAT with grouping chat</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="http://localhost:8000/socket.io/socket.io.js"></script>
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <img src="chat.png" alt="E-CHAT" class="logo">
+        <h1>Welcome to E-CHAT/Grouping Chat</h1>
+        <p>This is the main interface for the E-CHAT application.</p>
+    </div>
+    <div class="chat-container" id="chat-container">
+        <div class="message right" data-aos="fade-left">
+            You:Hello...bot!
+            <div class="time">20.10 a.m</div>
+        </div>
+        <!-- <div class="message left" data-aos="fade-right"> -->
+            <!-- Bot:Hi, How can I help you? -->
+        <!-- </div> -->
+        <!-- Chat messages will be displayed here -->
+    </div>
+    <div class="send">
+        <form id="send-container">
+            <input type="text" id="msginp" name="msginp" placeholder="Type your message here...">
+            <button type="submit" id="send-button">Send</button>
+        </form>
+    </div>
+</body>
+</html>
