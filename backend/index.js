@@ -5,7 +5,7 @@ const { Server } = require("socket.io");
 // Create the socket.io server with CORS options
 const io = new Server(8000, {
     cors: {
-        origin: ["http://127.0.0.1:5500", "http://localhost:5500"], // ✅ allow both
+        origin: ["http://127.0.0.1:5500", "http://localhost:5500"], // allow both
         methods: ["GET", "POST"],
     }
 });
@@ -37,4 +37,4 @@ io.on("connection", socket => {
         socket.broadcast.emit('typing', { name : users[socket.id] });
     });
 });
-console.log("🚀 Socket.IO server running on http://localhost:8000");
+console.log("Socket.IO server running on http://localhost:8000");
