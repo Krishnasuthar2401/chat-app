@@ -37,5 +37,4 @@ io.on("connection", socket => {
         socket.broadcast.emit('typing', { name : users[socket.id] });
     });
 });
-
-console.log("Success,Socket.IO server running on http://localhost:8000");
+console.log("🚀 Socket.IO server running on http://localhost:8000");
