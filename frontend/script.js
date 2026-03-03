@@ -37,17 +37,17 @@ socket.on('user-joined', name => {
 });
 
 socket.on('receive', data => {
-    append(`${data.name}: ${data.message}`, 'left');
+    append(`<b>${data.name}:</b> ${data.message}`, 'left');
 });
 
 socket.on('left', name => {
-    append(`${name} left the chat`, 'left');
+    append(`${name} left the chat...`, 'left');
 });
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const message = messageInput.value;
-    append(`You: ${message}`, 'right');
+    append(`<b>You:</b> ${message}`, 'right');
     socket.emit('send', message);
     messageInput.value = '';
 });
