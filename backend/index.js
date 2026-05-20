@@ -2,13 +2,31 @@
 // const io = require("socket.io")(8000)
 const app = require("express");
 const { Server } = require("socket.io");
-// Create the socket.io server with CORS options
-const io = new Server(8000, {
+const http = require('http').createServer(app);
+
+// Socket.io setup
+const io = require('socket.io')(http, {
     cors: {
-        origin: ["http://127.0.0.1:5500", "http://localhost:5500"], // allow both
+        origin: ["http://127.0.0.1:8080", "http://localhost:8080"], // Allows both IP and Localhost styles
         methods: ["GET", "POST"],
+        credentials: true
     }
 });
+
+// socket event listeners
+io.on('connection', (socket) => {
+    console.log('A user connected via socket:', socket.id);
+
+    // Example listener for messages
+    socket.on('chat message', (msg) => {
+        io.emit('chat message', msg);
+    });
+});
+
+// Make sure you are listening on port 8000
+// http.listen(8000, () => {
+//     console.log('Backend server listening on port 8000');
+// });
 
 const users = {};
 
@@ -34,7 +52,7 @@ io.on("connection", socket => {
         }
     });
     socket.on('typing', () => {
-        socket.broadcast.emit('typing', { name : users[socket.id] });
+        socket.broadcast.emit('typing', { name: users[socket.id] });
     });
 });
-console.log("🚀 Socket.IO server running on http://localhost:8000");
+// console.log("🚀 Socket.IO server running on http://localhost:8000");
