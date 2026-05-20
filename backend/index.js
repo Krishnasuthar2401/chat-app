@@ -9,7 +9,7 @@ const io = require('socket.io')(http, {
     cors: {
         origin: ["http://127.0.0.1:8080", "http://localhost:8080"], // Allows both IP and Localhost styles
         methods: ["GET", "POST"],
-        credentials: true
+        credentials: true,
     }
 });
 
